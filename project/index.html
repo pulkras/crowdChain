@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CrowdChain — Децентрализованный краудфандинг</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="logo">🚀 CrowdChain</a>
+      
+      <nav class="nav">
+        <a href="index.html" class="active">Кампании</a>
+        <a href="create.html">Создать</a>
+        <a href="#">О платформе</a>
+      </nav>
+      
+      <div class="wallet-block">
+        <span id="userAddress" class="user-address hidden"></span>
+        <button id="disconnectWallet" class="btn btn-outline hidden">Выйти</button>
+        <button id="connectWallet" class="btn btn-outline">🔗 Подключить кошелёк</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Финансируйте идеи будущего</h1>
+      <p>Децентрализованная платформа краудфандинга на базе смарт-контрактов. Прозрачно. Безопасно. Глобально.</p>
+      <a href="create.html" class="btn btn-primary">➕ Создать кампанию</a>
+    </section>
+
+    <section class="filters">
+      <input type="search" id="searchInput" placeholder="🔍 Поиск по названию или описанию..." />
+      <select id="categoryFilter">
+        <option value="">Все категории</option>
+        <option value="tech">💻 Технологии</option>
+        <option value="social">🤝 Социальные</option>
+        <option value="eco">🌱 Экология</option>
+        <option value="art">🎨 Искусство</option>
+      </select>
+      <select id="statusFilter">
+        <option value="">Любой статус</option>
+        <option value="active">🟢 Активные</option>
+        <option value="funded">✅ Финансируемые</option>
+        <option value="ended">⏹️ Завершённые</option>
+      </select>
+    </section>
+
+    <section id="campaignsGrid" class="grid">
+    </section>
+
+    <div id="emptyState" class="text-center hidden" style="padding: 3rem;">
+      <p style="font-size: 3rem; margin-bottom: 1rem;">🔍</p>
+      <h3>Ничего не найдено</h3>
+      <p style="color: #666;">Попробуйте изменить параметры поиска или создайте первую кампанию!</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 CrowdChain — Дипломный проект. Малыгин М М</p>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

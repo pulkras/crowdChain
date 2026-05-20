@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Кампания — CrowdChain</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="logo">🚀 CrowdChain</a>
+      <nav class="nav">
+        <a href="index.html">Кампании</a>
+        <a href="create.html">Создать</a>
+        <a href="#">О платформе</a>
+      </nav>
+      <div class="wallet-block">
+        <span id="userAddress" class="user-address hidden"></span>
+        <button id="disconnectWallet" class="btn btn-outline hidden">Выйти</button>
+        <button id="connectWallet" class="btn btn-outline">🔗 Подключить кошелёк</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="margin: 1rem 0;">
+      <a href="index.html" class="btn btn-secondary">← Назад к кампаниям</a>
+    </div>
+
+    <div id="campaignLoading" class="text-center" style="padding: 3rem;">
+      <p style="font-size: 2rem;">⏳</p>
+      <p>Загрузка кампании...</p>
+    </div>
+
+    <div id="campaignContent" class="campaign-detail hidden">
+      <div class="campaign-main">
+        <div style="font-size: 5rem; text-align: center; margin-bottom: 1rem;" id="cImage">💡</div>
+        <h1 id="cTitle">Загрузка...</h1>
+        
+        <div class="campaign-meta">
+          <div class="meta-item">👤 <span id="cCreator">0x...</span></div>
+          <div class="meta-item">📁 <span id="cCategory">Категория</span></div>
+          <div class="meta-item">📅 До <span id="cDeadline">...</span></div>
+        </div>
+        
+        <div class="progress-wrapper" style="margin: 1.5rem 0;">
+          <div class="progress-label">
+            <strong><span id="cRaised">0</span> ETH собрано</strong>
+            <strong><span id="cProgress">0</span>%</strong>
+          </div>
+          <progress id="cProgressEl" value="0" max="100"></progress>
+          <div class="progress-label" style="margin-top: 0.25rem;">
+            <small>Цель: <span id="cGoal">0</span> ETH</small>
+            <small id="cStatus" style="color: #667eea; font-weight: 500;">Активна</small>
+          </div>
+        </div>
+        
+        <div class="campaign-desc" id="cDescription">
+          <!-- Описание -->
+        </div>
+        
+        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+          <h3 style="margin-bottom: 1rem;">📊 Статистика блокчейна</h3>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; font-family: monospace; font-size: 0.9rem;">
+            <div>🔗 Контракт: <span id="cContract" style="word-break: break-all;">0x...</span></div>
+            <div>📦 Вкладов: <span id="cContributors">0</span></div>
+            <div>⛽ Gas использовано: <span id="cGas">~0.003 ETH</span></div>
+            <div>✅ Статус: <span id="cTxStatus">Ожидание</span></div>
+          </div>
+        </div>
+      </div>
+      
+      <aside class="campaign-sidebar">
+        <div class="funding-card">
+          <h3 style="margin-bottom: 0.5rem;">💰 Внести вклад</h3>
+          <p class="funding-goal">Цель: <strong id="sideGoal">0</strong> ETH</p>
+          
+          <form id="contributeForm" class="contribute-form">
+            <input type="number" id="contributeAmount" step="0.01" min="0.01" placeholder="0.1" required />
+            <button type="submit" class="btn btn-primary" id="contributeBtn">
+              💸 Поддержать проект
+            </button>
+          </form>
+          
+          <p style="font-size: 0.85rem; color: #718096; margin-top: 1rem;">
+            🔐 Средства блокируются в смарт-контракте до достижения цели
+          </p>
+        </div>
+        
+        <div class="funding-card" id="withdrawCard" style="display: none;">
+          <h3 style="margin-bottom: 0.5rem;">🎉 Цель достигнута!</h3>
+          <p style="color: #48bb78; margin-bottom: 1rem;">Вы можете вывести собранные средства</p>
+          <button id="withdrawBtn" class="btn btn-primary" style="width: 100%;">
+            💰 Вывести средства
+          </button>
+        </div>
+        
+        <div class="funding-card">
+          <h3 style="margin-bottom: 0.5rem;">🔗 Поделиться</h3>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="btn btn-secondary" onclick="navigator.clipboard.writeText(window.location.href); showToast('🔗 Ссылка скопирована!', 'success')">
+              📋 Копировать
+            </button>
+            <button class="btn btn-secondary" onclick="shareOnTwitter()">
+              🐦 Twitter
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div id="campaignNotFound" class="text-center hidden" style="padding: 3rem;">
+      <p style="font-size: 3rem;">❌</p>
+      <h3>Кампания не найдена</h3>
+      <p style="color: #666;">Возможно, она была удалена или ссылка устарела</p>
+      <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Вернуться к списку</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 CrowdChain — Дипломный проект. Ethereum • Solidity • Web3</p>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/campaign.js"></script>
+</body>
+</html>
